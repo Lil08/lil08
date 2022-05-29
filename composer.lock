@@ -4,8 +4,138 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d22b902b148b28298601ec014616fdf3",
+    "content-hash": "c21615b71eec6b39bc4c708c5f13f4d8",
     "packages": [
+        {
+            "name": "andrewdanilov/yii2-admin-panel",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AndrewDanilov/yii2-admin-panel.git",
+                "reference": "d7577cce2300db6886206e1bc51bf5c0255a4661"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AndrewDanilov/yii2-admin-panel/zipball/d7577cce2300db6886206e1bc51bf5c0255a4661",
+                "reference": "d7577cce2300db6886206e1bc51bf5c0255a4661",
+                "shasum": ""
+            },
+            "require": {
+                "andrewdanilov/yii2-grid-tools": "~1.0.0",
+                "php": ">=5.6.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "andrewdanilov\\adminpanel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AndrewDanilov",
+                    "email": "andrewdanilov@gmail.com"
+                }
+            ],
+            "description": "Simple Admin Panel",
+            "keywords": [
+                "admin",
+                "extension",
+                "panel",
+                "yii2"
+            ],
+            "time": "2020-11-13T19:21:56+00:00"
+        },
+        {
+            "name": "andrewdanilov/yii2-fontawesome",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AndrewDanilov/yii2-fontawesome.git",
+                "reference": "9c9af733913a6c14786799c14bb3de7866c4bb14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AndrewDanilov/yii2-fontawesome/zipball/9c9af733913a6c14786799c14bb3de7866c4bb14",
+                "reference": "9c9af733913a6c14786799c14bb3de7866c4bb14",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0",
+                "yiisoft/yii2": "^2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "andrewdanilov\\fontawesome\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AndrewDanilov",
+                    "email": "andrewdanilov@gmail.com"
+                }
+            ],
+            "description": "Fontawesome Asset Bundle",
+            "keywords": [
+                "FontAwesome",
+                "asset",
+                "extension",
+                "yii2"
+            ],
+            "time": "2021-05-11T16:30:32+00:00"
+        },
+        {
+            "name": "andrewdanilov/yii2-grid-tools",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AndrewDanilov/yii2-grid-tools.git",
+                "reference": "157a1b30677c72ce31c068cba1fd168329c73418"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AndrewDanilov/yii2-grid-tools/zipball/157a1b30677c72ce31c068cba1fd168329c73418",
+                "reference": "157a1b30677c72ce31c068cba1fd168329c73418",
+                "shasum": ""
+            },
+            "require": {
+                "andrewdanilov/yii2-fontawesome": "~1.0.0",
+                "php": ">=5.6.0",
+                "yiisoft/yii2": "^2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "andrewdanilov\\gridtools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AndrewDanilov",
+                    "email": "andrewdanilov@gmail.com"
+                }
+            ],
+            "description": "Tools for grids",
+            "keywords": [
+                "extension",
+                "grid",
+                "yii2"
+            ],
+            "time": "2021-05-11T16:37:38+00:00"
+        },
         {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",

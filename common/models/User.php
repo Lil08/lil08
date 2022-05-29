@@ -1,5 +1,4 @@
 <?php
-
 namespace common\models;
 
 use Yii;
@@ -22,6 +21,7 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property boolean $is_admin
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -29,6 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
+    public $password;
 
     /**
      * {@inheritdoc}
@@ -54,12 +55,47 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+        	[['username', 'email'], 'required'],
+        	[['username', 'email', 'password'], 'string'],
+	        [['is_admin'], 'boolean'],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
 
-    /**
+    public static function statuses()
+    {
+    	return [
+		    static::STATUS_INACTIVE => 'Неактивный',
+		    static::STATUS_ACTIVE => 'Активный',
+		    static::STATUS_DELETED => 'Удаленный',
+	    ];
+    }
+
+    public function attributeLabels()
+    {
+	    return [
+	    	'id' => 'ID',
+	    	'username' => 'Имя пользователя',
+	    	'email' => 'E-mail',
+	    	'status' => 'Статус',
+	    	'is_admin' => 'Администратор',
+	    ];
+    }
+
+	public function beforeSave($insert)
+    {
+    	if ($this->password) {
+    		$this->setPassword($this->password);
+    		$this->generateAuthKey();
+	    } elseif ($insert) {
+		    $this->addError('password', 'Пароль не может быть пустым');
+		    return false;
+	    }
+	    return parent::beforeSave($insert);
+    }
+
+	/**
      * {@inheritdoc}
      */
     public static function findIdentity($id)
@@ -195,9 +231,6 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
-    /**
-     * Generates new token for email verification
-     */
     public function generateEmailVerificationToken()
     {
         $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();

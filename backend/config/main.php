@@ -8,7 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
-    //'homeUrl' => '/admin',
+//	'homeUrl' => '/admin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -16,12 +16,15 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
-           // 'baseUrl' => '/admin'
+//	        'baseUrl' => '/admin',
         ],
         'user' => [
+            'class' => 'yii\web\User',
             'identityClass' => 'common\models\User',
+            'accessChecker' => 'backend\components\AccessChecker',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+            'loginUrl' => ['user/login'],
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
@@ -39,14 +42,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-
     ],
     'params' => $params,
 ];
