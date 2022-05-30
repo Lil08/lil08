@@ -84,7 +84,7 @@ class SiteController extends Controller
         return $this->render('blog');
     }
 
-    public function actionArticle(string $code)
+    public function actionArticle()
     {
         return $this->render('article');
     }

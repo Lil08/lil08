@@ -12,7 +12,38 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        // ...
+        'custompages' => [
+            'class' => 'andrewdanilov\custompages\backend\Module',
+            // access role for module controllers, optional, default is ['@']
+            'access' => ['admin'],
+            // path to Views for pages and categories
+            'templatesPath' => '@frontend/views/custompages',
+            // optional, path to user translates
+//            'translatesPath' => '@common/messages/custompages',
+            // optional, enables controls for managing page tags, default is true
+//            'enableTags' => false,
+            // optional, enables controls for managing page albums, default is true
+//            'enableAlbums' => false,
+            // optional, enables controls for managing categories, default is true
+//            'enableCategories' => false,
+            // file manager configuration, optional, default is:
+            'fileManager' => [
+                'basePath' => '@frontend/web',
+                'paths' => [
+                    [
+                        'name' => 'News',
+                        'path' => 'upload/images/news',
+                    ],
+                    [
+                        'name' => 'Articles',
+                        'path' => 'upload/images/articles',
+                    ],
+                ],
+            ],
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
