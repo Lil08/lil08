@@ -15,6 +15,7 @@ use andrewdanilov\adminpanel\Menu;
 		[],
 		['label' => 'Блог'],
 		['label' => 'Новости', 'url' => ['/news/index'], 'icon' => ['symbol' => 'newspaper', 'type' => 'regular']],
+		['label' => 'Категории', 'url' => ['/category/index'], 'icon' => ['symbol' => 'tags', 'type' => 'solid']],
 		['label' => 'Посты', 'url' => ['/post/index'], 'icon' => ['symbol' => 'newspaper', 'type' => 'solid']],
 		['label' => 'Статьи', 'url' => ['/custompages/page'], 'icon' => ['symbol' => 'newspaper', 'type' => 'solid']],
 		['label' => 'Категории', 'url' => ['/custompages/category'], 'icon' => ['symbol' => 'tags', 'type' => 'solid']],

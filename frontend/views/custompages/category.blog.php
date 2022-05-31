@@ -7,8 +7,10 @@
 /* @var $pagination \yii\data\Pagination */
 
 use andrewdanilov\custompages\frontend\assets\CustomPagesAsset;
+use app\widgets\AllCategories;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
+use yii\widgets\ListView;
 
 $this->title = $category->meta_title ?: $category->title;
 $this->registerMetaTag([
@@ -17,6 +19,14 @@ $this->registerMetaTag([
 ]);
 
 CustomPagesAsset::register($this);
+
+$pagination = new \yii\data\Pagination(['totalCount' => 3, 'pageSize' => 2]);
+$pagination->pageSizeParam = false;
+$pagination->forcePageParam = false;
+
+//$pages = $pages->offset($pagination->offset)
+//    ->limit($pagination->limit)
+//    ->all();
 ?>
 <section class="blog_area p_120">
     <?= $category->processedText ?>
@@ -24,31 +34,47 @@ CustomPagesAsset::register($this);
         <div class="row">
             <div class="col-lg-8">
                 <div class="blog_left_sidebar">
-                    <div class="row">
-                        <?php foreach (array_chunk($pages, 2, true) as $page) { ?>
-                            <div class="col-md-6">
-                                111
-                                <article class="blog_style1 small">
-                                    <div class="blog_img">
-                                        <img class="img-fluid" src="<?= $page->image ?>" alt="">
-                                    </div>
-                                    <div class="blog_text">
-                                        <div class="blog_text_inner">
-                                            <div class="cat">
-                                                <a class="cat_btn" href="#">Gadgets</a>
-                                                <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14,
-                                                    2018</a>
-                                                <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                            </div>
-                                            <a href="<?= Url::to(['default/page', 'id' => $page->id]) ?>"><h4><?= $page->title ?></h4></a>
-                                            <p><?= $page->shortText ?></p>
-                                            <a class="blog_btn" href="<?= Url::to(['default/page', 'id' => $page->id]) ?>">Read More</a>
+                    <?php foreach (array_chunk($pages, 2, true) as $partPages) {
+                        ?>
+                        <div class="row">
+                            <?php foreach ($partPages as $page) {
+                                ?>
+                                <div class="col-md-6">
+                                    <article class="blog_style1 small">
+                                        <div class="blog_img">
+                                            <img class="img-fluid" src="<?= $page->image ?>" alt="">
                                         </div>
-                                    </div>
-                                </article>
-                            </div>
-                        <?php } ?>
-                    </div>
+                                        <div class="blog_text">
+                                            <div class="blog_text_inner">
+                                                <div class="cat">
+                                                    <?php foreach ($page->tags as $tag) {
+                                                        ?>
+                                                        <a class="cat_btn" href="#"><?= $tag->name ?></a>
+                                                    <?php } ?>
+                                                    <a href="#"><i class="fa fa-calendar"
+                                                                   aria-hidden="true"></i> <?= $page->published_at ?>
+                                                    </a>
+                                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i>
+                                                        05</a>
+                                                </div>
+                                                <a href="<?= Url::to(['default/page', 'id' => $page->id]) ?>">
+                                                    <h4><?= $page->title ?></h4></a>
+                                                <p><?= $page->shortText ?></p>
+                                                <a class="blog_btn"
+                                                   href="<?= Url::to(['default/page', 'id' => $page->id]) ?>">Read
+                                                    More</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <br>
+                    <?php } ?>
+                    <? echo LinkPager::widget([
+                        'pagination' => $pagination,
+                        'registerLinkTags' => true
+                    ]); ?>
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
                             <li class="page-item">
@@ -82,7 +108,7 @@ CustomPagesAsset::register($this);
                             <span class="input-group-btn">
                                         <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
                                     </span>
-                        </div><!-- /input-group -->
+                        </div>
                         <div class="br"></div>
                     </aside>
                     <aside class="single_sidebar_widget author_widget">
@@ -144,53 +170,7 @@ CustomPagesAsset::register($this);
                         </div>
                         <div class="br"></div>
                     </aside>
-                    <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title">Post Catgories</h4>
-                        <ul class="list cat-list">
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Technology</p>
-                                    <p>37</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Lifestyle</p>
-                                    <p>24</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Fashion</p>
-                                    <p>59</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Art</p>
-                                    <p>29</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Food</p>
-                                    <p>15</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Architecture</p>
-                                    <p>09</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Adventure</p>
-                                    <p>44</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </aside>
+                    <?= AllCategories::widget() ?>
                 </div>
             </div>
         </div>

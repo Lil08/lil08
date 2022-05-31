@@ -2,33 +2,44 @@
 
 namespace backend\controllers;
 
-use andrewdanilov\adminpanel\controllers\BackendController;
-use andrewdanilov\custompages\backend\models\PageSearch;
-use backend\models\PostSearch;
 use common\models\Category;
-use common\models\Post;
-use Yii;
-use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
+use backend\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PostController implements the CRUD actions for Post model.
+ * CategoryController implements the CRUD actions for Category model.
  */
-class PostController extends BackendController
+class CategoryController extends Controller
 {
+    /**
+     * @inheritDoc
+     */
+    public function behaviors()
+    {
+        return array_merge(
+            parent::behaviors(),
+            [
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['POST'],
+                    ],
+                ],
+            ]
+        );
+    }
 
     /**
-     * Lists all Post models.
+     * Lists all Category models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PostSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new CategorySearch();
+        $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -37,7 +48,7 @@ class PostController extends BackendController
     }
 
     /**
-     * Displays a single Post model.
+     * Displays a single Category model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -50,31 +61,29 @@ class PostController extends BackendController
     }
 
     /**
-     * Creates a new Post model.
+     * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Post();
+        $model = new Category();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'PostSearch' => ['category_id' => $model->category_id]]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
         }
 
-        $listCategories = $this->getCategories();
         return $this->render('create', [
             'model' => $model,
-            'listCategories' => $listCategories
         ]);
     }
 
     /**
-     * Updates an existing Post model.
+     * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -88,15 +97,13 @@ class PostController extends BackendController
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $listCategories = $this->getCategories();
         return $this->render('update', [
             'model' => $model,
-            'listCategories' => $listCategories
         ]);
     }
 
     /**
-     * Deletes an existing Post model.
+     * Deletes an existing Category model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -110,30 +117,18 @@ class PostController extends BackendController
     }
 
     /**
-     * Finds the Post model based on its primary key value.
+     * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Post the loaded model
+     * @return Category the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Post::findOne(['id' => $id])) !== null) {
+        if (($model = Category::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    protected function getCategories(): array
-    {
-        $categories = Category::find()->all();
-        $listCategories = [];
-        foreach ($categories as $category) {
-            $listCategories[$category->id] = $category->title;
-        }
-
-        return $listCategories;
-    }
-
 }

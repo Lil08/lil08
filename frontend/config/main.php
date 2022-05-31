@@ -59,7 +59,7 @@ return [
             // optional, path to user translates
 //            'translatesPath' => '@common/messages/custompages',
             // optional, page text short version length, default is 50
-            'pageShortTextWordsCount' => '100',
+            'pageShortTextWordsCount' => '30',
             // optional, callable functions to process page and category text,
             // i.e. to replace some shortcodes on it
             'pageTextProcessor' => 'frontend\components\MyPageTextProcessor::replaceShortcodes',

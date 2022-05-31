@@ -24,35 +24,35 @@ CustomPagesAsset::register($this);
 		<h1><?= $pageTag->name ?></h1>
 
 		<div class="all-tags">
-			<?php foreach ($tags as $tag) { ?>
-				<a href="<?= Url::to(['/custompages/default/page-tag', 'slug' => $tag->slug]) ?>" class="blog__tag"><?= $tag->name ?></a>
-			<?php } ?>
+<!--			--><?php //foreach ($tags as $tag) { ?>
+<!--				<a href="--><?//= Url::to(['/custompages/default/page-tag', 'slug' => $tag->slug]) ?><!--" class="blog__tag">--><?//= $tag->name ?><!--</a>-->
+<!--			--><?php //} ?>
 		</div>
 
 		<div class="tag-list">
 
-			<?php foreach ($pages as $page) { ?>
-
-				<div class="tag-list-item">
-
-					<div class="list-item-image">
-						<img src="<?= $page->image ?>" alt="">
-					</div>
-					<div class="list-item-content">
-						<a class="list-item-title" href="<?= Url::to(['default/page', 'id' => $page->id]) ?>"><?= $page->title ?></a>
-						<div>
-							<?= $page->shortText ?>
-						</div>
-					</div>
-
-				</div>
-
-			<?php } ?>
+<!--			--><?php //foreach ($pages as $page) { ?>
+<!---->
+<!--				<div class="tag-list-item">-->
+<!---->
+<!--					<div class="list-item-image">-->
+<!--						<img src="--><?//= $page->image ?><!--" alt="">-->
+<!--					</div>-->
+<!--					<div class="list-item-content">-->
+<!--						<a class="list-item-title" href="--><?//= Url::to(['default/page', 'id' => $page->id]) ?><!--">--><?//= $page->title ?><!--</a>-->
+<!--						<div>-->
+<!--							--><?//= $page->shortText ?>
+<!--						</div>-->
+<!--					</div>-->
+<!---->
+<!--				</div>-->
+<!---->
+<!--			--><?php //} ?>
 
 		</div>
 
-		<?= LinkPager::widget([
-            'pagination' => $pagination,
-        ]); ?>
+<!--		--><?//= LinkPager::widget([
+//            'pagination' => $pagination,
+//        ]); ?>
 	</div>
 </div>
