@@ -11,9 +11,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-create">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-        'listCategories' => $listCategories
-    ]) ?>
+    <?= $this->render('_form', compact('model', 'listCategories', 'tags', 'selectedTags')) ?>
 
 </div>

@@ -80,5 +80,19 @@ return [
             ],
         ],
     ],
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\Controller',
+            'access' => ['admin'],
+            'roots' => [
+                [
+                    'baseUrl' => '',
+                    'basePath' => '@frontend/web',
+                    'path' => 'upload/images',
+                    'name' => 'Изображения',
+                ],
+            ],
+        ],
+    ],
     'params' => $params,
 ];

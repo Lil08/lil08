@@ -2,11 +2,12 @@
 
 namespace frontend\controllers;
 
-use frontend\models\Post;
+use common\models\Post;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\data\ActiveDataProvider;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -76,7 +77,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Post::find()->with('tags')->where(['active' => true]),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+
+        return $this->render('index', compact( 'dataProvider'));
     }
 
     public function actionBlog()

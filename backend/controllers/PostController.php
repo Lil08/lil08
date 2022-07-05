@@ -4,12 +4,15 @@ namespace backend\controllers;
 
 use andrewdanilov\adminpanel\controllers\BackendController;
 use andrewdanilov\custompages\backend\models\PageSearch;
+use app\models\Type;
 use backend\models\PostSearch;
 use common\models\Category;
 use common\models\Post;
+use common\models\Tag;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -57,20 +60,23 @@ class PostController extends BackendController
     public function actionCreate()
     {
         $model = new Post();
+        $selectedTags = $model->getSelectedTags();
+        $tags = ArrayHelper::map(Tag::find()->all(), 'id', 'name');
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $tags = Yii::$app->request->post('tags');
+                $model->save();
+                $model->saveTags($tags);
                 return $this->redirect(['view', 'id' => $model->id, 'PostSearch' => ['category_id' => $model->category_id]]);
             }
         } else {
             $model->loadDefaultValues();
         }
 
-        $listCategories = $this->getCategories();
-        return $this->render('create', [
-            'model' => $model,
-            'listCategories' => $listCategories
-        ]);
+        $listCategories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
+
+        return $this->render('update', compact('model', 'listCategories', 'tags', 'selectedTags'));
     }
 
     /**
@@ -83,16 +89,18 @@ class PostController extends BackendController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $selectedTags = $model->getSelectedTags();
+        $tags = ArrayHelper::map(Tag::find()->all(), 'id', 'name');
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $tags = Yii::$app->request->post('tags');
+            $model->saveTags($tags);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $listCategories = $this->getCategories();
-        return $this->render('update', [
-            'model' => $model,
-            'listCategories' => $listCategories
-        ]);
+        $listCategories = ArrayHelper::map(Category::find()->all(), 'id', 'title');
+        return $this->render('update', compact('model', 'listCategories', 'tags', 'selectedTags'));
     }
 
     /**

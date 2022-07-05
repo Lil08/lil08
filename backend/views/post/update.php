@@ -12,9 +12,7 @@ $this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 <div class="post-update">
 
-    <?= $this->render('_form', [
-        'model' => $model,
-        'listCategories' => $listCategories
-    ]) ?>
+    <?= $this->render('_form', compact('model', 'listCategories', 'tags', 'selectedTags')) ?>
+
 
 </div>

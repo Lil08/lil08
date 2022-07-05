@@ -16,7 +16,7 @@ class AppAsset extends AssetBundle
 //        'css/variables.css',
 //        'css/aos.css',
         'css/bootstrap.css',
-        'css/font-awesome.min.css',
+        'fonts/font-awesome.min.css',
         'css/style.css',
         'css/responsive.css',
         'css/owl.carousel.min.css',

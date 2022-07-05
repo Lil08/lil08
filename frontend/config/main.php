@@ -44,27 +44,26 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                'blog' => 'site/blog',
-                'article' => 'site/article',
+                '<category>/<code>' => 'post/view',
             ],
         ],
 
     ],
     'modules' => [
         // ...
-        'custompages' => [
-            'class' => 'andrewdanilov\custompages\frontend\Module',
-            // optional, path to template Views for pages and categories
-            'templatesPath' => '@frontend/views/custompages',
-            // optional, path to user translates
-//            'translatesPath' => '@common/messages/custompages',
-            // optional, page text short version length, default is 50
-            'pageShortTextWordsCount' => '30',
-            // optional, callable functions to process page and category text,
-            // i.e. to replace some shortcodes on it
-            'pageTextProcessor' => 'frontend\components\MyPageTextProcessor::replaceShortcodes',
-            'categoryTextProcessor' => 'frontend\components\MyCategoryTextProcessor::replaceShortcodes',
-        ],
+//        'custompages' => [
+//            'class' => 'andrewdanilov\custompages\frontend\Module',
+//            // optional, path to template Views for pages and categories
+//            'templatesPath' => '@frontend/views/custompages',
+//            // optional, path to user translates
+////            'translatesPath' => '@common/messages/custompages',
+//            // optional, page text short version length, default is 50
+//            'pageShortTextWordsCount' => '30',
+//            // optional, callable functions to process page and category text,
+//            // i.e. to replace some shortcodes on it
+//            'pageTextProcessor' => 'frontend\components\MyPageTextProcessor::replaceShortcodes',
+//            'categoryTextProcessor' => 'frontend\components\MyCategoryTextProcessor::replaceShortcodes',
+//        ],
     ],
     'params' => $params,
 ];

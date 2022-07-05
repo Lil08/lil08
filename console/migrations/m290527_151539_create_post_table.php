@@ -16,7 +16,7 @@ class m290527_151539_create_post_table extends Migration
             'id' => $this->primaryKey(),
             'title' => $this->string(),
             'text' => $this->text(),
-            'createdAt' => $this->dateTime(),
+            'createdAt' => $this->date(),
             'active' => $this->boolean(),
             'image' => $this->string()
         ]);

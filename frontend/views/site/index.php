@@ -1,8 +1,13 @@
 <?php
 
-/** @var yii\web\View $this */
+/** @var yii\web\View $this
+ * @var \yii\data\ActiveDataProvider $dataProvider
+ */
+
+use yii\widgets\ListView;
 
 $this->title = 'Lil08';
+//\frontend\helpers\SiteHelper::vardump($dataProvider->getModels());die;
 ?>
 
 <!--================Home Banner Area =================-->
@@ -20,7 +25,8 @@ $this->title = 'Lil08';
                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
                             </div>
                             <a href="#"><h4>Nest Protect: 2nd Gen Smoke + CO Alarm</h4></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore.</p>
                             <a class="blog_btn" href="#">Read More</a>
                         </div>
                     </div>
@@ -32,7 +38,8 @@ $this->title = 'Lil08';
                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
                             </div>
                             <a href="#"><h4>Nest Protect: 2nd Gen Smoke + CO Alarm</h4></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore.</p>
                             <a class="blog_btn" href="#">Read More</a>
                         </div>
                     </div>
@@ -44,7 +51,8 @@ $this->title = 'Lil08';
                                 <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
                             </div>
                             <a href="#"><h4>Nest Protect: 2nd Gen Smoke + CO Alarm</h4></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore.</p>
                             <a class="blog_btn" href="#">Read More</a>
                         </div>
                     </div>
@@ -61,160 +69,31 @@ $this->title = 'Lil08';
         <div class="row">
             <div class="col-lg-8">
                 <div class="blog_left_sidebar">
-                    <article class="blog_style1">
-                        <div class="blog_img">
-                            <img class="img-fluid" src="img/home-blog/blog-1.jpg" alt="">
-                        </div>
-                        <div class="blog_text">
-                            <div class="blog_text_inner">
-                                <div class="cat">
-                                    <a class="cat_btn" href="#">Gadgets</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                </div>
-                                <a href="#"><h4>Nest Protect: 2nd Gen Smoke + CO Alarm</h4></a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                <a class="blog_btn" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </article>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <article class="blog_style1 small">
-                                <div class="blog_img">
-                                    <img class="img-fluid" src="img/home-blog/blog-small-1.jpg" alt="">
-                                </div>
-                                <div class="blog_text">
-                                    <div class="blog_text_inner">
-                                        <div class="cat">
-                                            <a class="cat_btn" href="#">Gadgets</a>
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                        </div>
-                                        <a href="single-blog.html"><h4>Nest Protect 2nd Gen Smoke CO Alarm</h4></a>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid unt ut labore et dolore magna aliqua.</p>
-                                        <a class="blog_btn" href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-md-6">
-                            <article class="blog_style1 small">
-                                <div class="blog_img">
-                                    <img class="img-fluid" src="img/home-blog/blog-small-2.jpg" alt="">
-                                </div>
-                                <div class="blog_text">
-                                    <div class="blog_text_inner">
-                                        <div class="cat">
-                                            <a class="cat_btn" href="#">Gadgets</a>
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                        </div>
-                                        <a href="single-blog.html"><h4>Nest Protect 2nd Gen Smoke CO Alarm</h4></a>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid unt ut labore et dolore magna aliqua.</p>
-                                        <a class="blog_btn" href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <article class="blog_style1">
-                        <div class="blog_img">
-                            <img class="img-fluid" src="img/home-blog/blog-2.jpg" alt="">
-                        </div>
-                        <div class="blog_text">
-                            <div class="blog_text_inner">
-                                <div class="cat">
-                                    <a class="cat_btn" href="#">Gadgets</a>
-                                    <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14, 2018</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                </div>
-                                <a href="single-blog.html"><h4>Nest Protect: 2nd Gen Smoke CO Alarm</h4></a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                <a class="blog_btn" href="#">Read More</a>
-                            </div>
-                        </div>
-                    </article>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <article class="blog_style1 small">
-                                <div class="blog_img">
-                                    <img class="img-fluid" src="img/home-blog/blog-small-3.jpg" alt="">
-                                </div>
-                                <div class="blog_text">
-                                    <div class="blog_text_inner">
-                                        <div class="cat">
-                                            <a class="cat_btn" href="#">Gadgets</a>
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                        </div>
-                                        <a href="single-blog.html"><h4>Nest Protect 2nd Gen Smoke CO Alarm</h4></a>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid unt ut labore et dolore magna aliqua.</p>
-                                        <a class="blog_btn" href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-md-6">
-                            <article class="blog_style1 small">
-                                <div class="blog_img">
-                                    <img class="img-fluid" src="img/home-blog/blog-small-4.jpg" alt="">
-                                </div>
-                                <div class="blog_text">
-                                    <div class="blog_text_inner">
-                                        <div class="cat">
-                                            <a class="cat_btn" href="#">Gadgets</a>
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                        </div>
-                                        <a href="single-blog.html"><h4>Nest Protect 2nd Gen Smoke CO Alarm</h4></a>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid unt ut labore et dolore magna aliqua.</p>
-                                        <a class="blog_btn" href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <article class="blog_style1 small">
-                                <div class="blog_img">
-                                    <img class="img-fluid" src="img/home-blog/blog-small-5.jpg" alt="">
-                                </div>
-                                <div class="blog_text">
-                                    <div class="blog_text_inner">
-                                        <div class="cat">
-                                            <a class="cat_btn" href="#">Gadgets</a>
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                        </div>
-                                        <a href="single-blog.html"><h4>Nest Protect 2nd Gen Smoke CO Alarm</h4></a>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid unt ut labore et dolore magna aliqua.</p>
-                                        <a class="blog_btn" href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-md-6">
-                            <article class="blog_style1 small">
-                                <div class="blog_img">
-                                    <img class="img-fluid" src="img/home-blog/blog-small-6.jpg" alt="">
-                                </div>
-                                <div class="blog_text">
-                                    <div class="blog_text_inner">
-                                        <div class="cat">
-                                            <a class="cat_btn" href="#">Gadgets</a>
-                                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> March 14, 2018</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>
-                                        </div>
-                                        <a href="single-blog.html"><h4>Nest Protect 2nd Gen Smoke CO Alarm</h4></a>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid unt ut labore et dolore magna aliqua.</p>
-                                        <a class="blog_btn" href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
+                    <?php $count = count($dataProvider->getModels());?>
+                    <?=
+                    ListView::widget([
+                        'dataProvider' => $dataProvider,
+//                        'options' => [
+//                            'tag' => 'div',
+//                            'class' => 'list-wrapper',
+//                            'id' => 'list-wrapper',
+//                        ],
+                        'itemOptions' => [
+                            'tag' => false,
+                        ],
+                        'layout' => "{items}\n{pager}\n{summary}",
+                        'itemView' => function ($model, $key, $index, $widget) {
+                            return $this->render('_item', compact('model', 'key', 'index','widget'));
+                        },
+                        'pager' => [
+                            'firstPageLabel' => 'first',
+                            'lastPageLabel' => 'last',
+                            'nextPageLabel' => 'next',
+                            'prevPageLabel' => 'previous',
+                            'maxButtonCount' => 3,
+                        ],
+                    ]);
+                    ?>
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
                             <li class="page-item">
@@ -255,7 +134,9 @@ $this->title = 'Lil08';
                         <img class="author_img img-fluid" src="img/blog/author.png" alt="">
                         <h4>Charlie Barber</h4>
                         <p>Senior blog writer</p>
-                        <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you should have to spend money on boot camp when you can get. Boot camps have itssuppor ters andits detractors.</p>
+                        <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you
+                            should have to spend money on boot camp when you can get. Boot camps have itssuppor ters
+                            andits detractors.</p>
                         <div class="social_icon">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -300,7 +181,9 @@ $this->title = 'Lil08';
                         <h4 class="widget_title">Newsletter</h4>
                         <div class="form-group d-flex flex-row">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
+                                <input type="text" class="form-control" id="inlineFormInputGroup"
+                                       placeholder="Enter email" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Enter email'">
                             </div>
                             <a href="#" class="bbtns"><i class="lnr lnr-arrow-right"></i></a>
                         </div>

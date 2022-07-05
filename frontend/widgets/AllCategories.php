@@ -1,6 +1,6 @@
 <?php
 
-namespace app\widgets;
+namespace frontend\widgets;
 
 use andrewdanilov\custompages\common\models\Category;
 use yii\base\Widget;
