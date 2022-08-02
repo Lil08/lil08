@@ -8,9 +8,9 @@
         <?php ?>
         <?php foreach ($categories as $category) { ?>
             <li>
-                <a href="/<?= $category->slug ?>" class="d-flex justify-content-between">
+                <a href="/blog/<?= $category->code ?>" class="d-flex justify-content-between">
                     <p><?= $category->title ?></p>
-                    <p><?= $category->getPages()->count() ?></p>
+                    <p><?= $category->getPagesCount() ?></p>
                 </a>
             </li>
         <?php } ?>

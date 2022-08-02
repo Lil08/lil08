@@ -16,6 +16,7 @@ class PostSearch extends Post
         return [
             [['id', 'category_id'], 'integer'],
             [['code', 'title', 'createdAt'], 'string'],
+            [['active'], 'boolean']
         ];
     }
 
@@ -59,6 +60,7 @@ class PostSearch extends Post
 
 	    $query->andFilterWhere(['like', 'code', $this->code])
             ->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'active', $this->active])
             ->andFilterWhere(['like', 'createdAt', $published_at_search]);
 
         return $dataProvider;

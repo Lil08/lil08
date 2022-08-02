@@ -48,6 +48,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'image')->widget(InputImages::class)  ?>
 
+    <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true])  ?>
+
+    <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true])  ?>
+
+    <?= $form->field($model, 'keywords')->textInput(['maxlength' => true])  ?>
+
     <?= $form->field($model, 'active')->checkbox() ?>
 
     <div class="form-group">

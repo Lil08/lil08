@@ -22,6 +22,9 @@ use yii\helpers\Inflector;
  * @property string|null $image
  * @property string|null $code
  * @property string|null $category_id
+ * @property string|null $meta_title
+ * @property string|null $meta_description
+ * @property string|null $keywords
  * @property $tags
  */
 class Post extends \yii\db\ActiveRecord
@@ -44,7 +47,7 @@ class Post extends \yii\db\ActiveRecord
             [['createdAt'], 'safe'],
             [['category_id'], 'number'],
             [['active'], 'boolean'],
-            [['title', 'image', 'code'], 'string', 'max' => 255],
+            [['title', 'image', 'code','meta_title','meta_description','keywords'], 'string', 'max' => 255],
         ];
     }
 
@@ -79,6 +82,17 @@ class Post extends \yii\db\ActiveRecord
     {
         $selectedIds = $this->getTags()->select('id')->asArray()->all();
         return ArrayHelper::getColumn($selectedIds, 'id');
+    }
+
+    public function getCommnetsCount()
+    {
+        return Comments::find()->where(['active' => true])->andWhere(['post_id' => $this->id])->count();
+    }
+
+    public function getUrl()
+    {
+        $category = Category::find()->where(['id' => $this->category_id])->one();
+        return '/blog/' . $category->code . '/' . $this->code;
     }
 
     public function beforeSave($insert)

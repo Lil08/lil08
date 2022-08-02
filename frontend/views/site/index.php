@@ -4,9 +4,11 @@
  * @var \yii\data\ActiveDataProvider $dataProvider
  */
 
+use frontend\widgets\AllCategories;
 use yii\widgets\ListView;
 
 $this->title = 'Lil08';
+$count = $dataProvider->getTotalCount();
 //\frontend\helpers\SiteHelper::vardump($dataProvider->getModels());die;
 ?>
 
@@ -69,30 +71,32 @@ $this->title = 'Lil08';
         <div class="row">
             <div class="col-lg-8">
                 <div class="blog_left_sidebar">
-                    <?php $count = count($dataProvider->getModels());?>
-                    <?=
-                    ListView::widget([
-                        'dataProvider' => $dataProvider,
-//                        'options' => [
-//                            'tag' => 'div',
-//                            'class' => 'list-wrapper',
-//                            'id' => 'list-wrapper',
-//                        ],
-                        'itemOptions' => [
-                            'tag' => false,
-                        ],
-                        'layout' => "{items}\n{pager}\n{summary}",
-                        'itemView' => function ($model, $key, $index, $widget) {
-                            return $this->render('_item', compact('model', 'key', 'index','widget'));
-                        },
-                        'pager' => [
-                            'firstPageLabel' => 'first',
-                            'lastPageLabel' => 'last',
-                            'nextPageLabel' => 'next',
-                            'prevPageLabel' => 'previous',
-                            'maxButtonCount' => 3,
-                        ],
-                    ]);
+                    <?php
+                    try {
+                        echo ListView::widget([
+                            'dataProvider' => $dataProvider,
+                            'itemOptions' => [
+                                'tag' => false,
+                            ],
+                            'layout' => "{items}\n{pager}\n{summary}",
+                            'itemView' => function ($model, $key, $index, $widget) use ($count) {
+                                return $this->render('_item', compact('model', 'key', 'index', 'widget', 'count'));
+                            },
+                            'pager' => [
+                                'options' => ['class' => 'pagination'],
+                                'pageCssClass' => 'page-item',
+                                'activePageCssClass' => 'active',
+                                'nextPageLabel' => 'Вперёд<svg><use xlink:href="#arrow-right"></use></svg>',
+                                'prevPageLabel' => '<svg><use xlink:href="#arrow-left"></use></svg>Назад',
+                                //'prevPageCssClass' => 'navigation-item arrow prev',
+                                //'nextPageCssClass' => 'navigation-item arrow next',
+                                'maxButtonCount' => 8,
+                            ]
+                        ]);
+                    } catch (Exception $e) {
+                        echo 'Ошибка вывода постов. ';
+                        echo $e->getMessage();
+                    }
                     ?>
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
@@ -189,57 +193,10 @@ $this->title = 'Lil08';
                         </div>
                         <div class="br"></div>
                     </aside>
-                    <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title">Post Catgories</h4>
-                        <ul class="list cat-list">
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Technology</p>
-                                    <p>37</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Lifestyle</p>
-                                    <p>24</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Fashion</p>
-                                    <p>59</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Art</p>
-                                    <p>29</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Food</p>
-                                    <p>15</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Architecture</p>
-                                    <p>09</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Adventure</p>
-                                    <p>44</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </aside>
+                    <?= AllCategories::widget() ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!--================Blog Area =================-->
 

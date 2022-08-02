@@ -80,22 +80,22 @@ class SiteController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find()->with('tags')->where(['active' => true]),
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => 2,
             ]
         ]);
 
         return $this->render('index', compact( 'dataProvider'));
     }
 
-    public function actionBlog()
-    {
-        return $this->render('blog');
-    }
-
-    public function actionArticle()
-    {
-        return $this->render('article');
-    }
+//    public function actionBlog()
+//    {
+//        return $this->render('blog');
+//    }
+//
+//    public function actionArticle()
+//    {
+//        return $this->render('article');
+//    }
 
     /**
      * Logs in a user.

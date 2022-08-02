@@ -15,7 +15,7 @@ class SiteHelper
 
     public static function shortText($text) {
 
-        return TextHelper::shortText($text, 50);
+        return TextHelper::shortText($text, 30);
     }
 
 }

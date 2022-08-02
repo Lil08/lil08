@@ -2,7 +2,7 @@
 
 namespace frontend\widgets;
 
-use andrewdanilov\custompages\common\models\Category;
+use common\models\Category;
 use yii\base\Widget;
 
 class AllCategories extends Widget

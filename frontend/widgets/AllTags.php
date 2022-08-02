@@ -2,8 +2,7 @@
 
 namespace frontend\widgets;
 
-use andrewdanilov\custompages\common\models\Category;
-use andrewdanilov\custompages\common\models\PageTag;
+use common\models\Tag;
 use yii\base\Widget;
 
 class AllTags extends Widget
@@ -12,7 +11,7 @@ class AllTags extends Widget
 
     public function run()
     {
-        $tags = PageTag::find()->all();
+        $tags = Tag::find()->all();
 
         return $this->render('all-tags/' . $this->view, compact('tags'));
     }

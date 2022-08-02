@@ -51,6 +51,11 @@ class Category extends \yii\db\ActiveRecord
         return $this->hasMany(Post::class, ['category_id' => 'id']);
     }
 
+    public function getPagesCount()
+    {
+        return Post::find()->where(['active' => true])->andWhere(['category_id' => $this->id])->count();
+    }
+
     public static function getCategoriesList()
     {
         return static::find()->select(['title', 'id'])->orderBy(['order' => SORT_ASC, 'id' => SORT_ASC])->indexBy('id')->column();

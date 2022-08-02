@@ -7,18 +7,28 @@
 
 use frontend\widgets\AllCategories;
 use frontend\widgets\AllTags;
+use frontend\widgets\PopularPosts;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+//\frontend\helpers\SiteHelper::vardump($model->title);die;
+$this->title = $model->meta_title ?: $model->title;
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => $model->meta_description,
+]);
+$this->registerMetaTag([
+    'name' => 'keywords',
+    'content' => $model->keywords,
+]);
 ?>
 
-<section class="blog_area p_120 single-post-area">
+<section class="blog_area single-post-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="main_blog_details">
                     <img class="img-fluid" src="<?= $model->image ?>" alt="">
-                    <a href="#"><h4<?= $model->title ?></h4></a>
+                    <a href="#"><h4><?= $model->title ?></h4></a>
                     <div class="user_details">
                         <div class="float-left">
                             <?php foreach ($model->tags as $tag) { ?>
@@ -120,38 +130,7 @@ use yii\widgets\ActiveForm;
                         </div><!-- /input-group -->
                         <div class="br"></div>
                     </aside>
-                    <aside class="single_sidebar_widget popular_post_widget">
-                        <h3 class="widget_title">Popular Posts</h3>
-                        <div class="media post_item">
-                            <img src="img/blog/popular-post/post1.jpg" alt="post">
-                            <div class="media-body">
-                                <a href="blog-details.html"><h3>Space The Final Frontier</h3></a>
-                                <p>02 Hours ago</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="img/blog/popular-post/post2.jpg" alt="post">
-                            <div class="media-body">
-                                <a href="blog-details.html"><h3>The Amazing Hubble</h3></a>
-                                <p>02 Hours ago</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="img/blog/popular-post/post3.jpg" alt="post">
-                            <div class="media-body">
-                                <a href="blog-details.html"><h3>Astronomy Or Astrology</h3></a>
-                                <p>03 Hours ago</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="img/blog/popular-post/post4.jpg" alt="post">
-                            <div class="media-body">
-                                <a href="blog-details.html"><h3>Asteroids telescope</h3></a>
-                                <p>01 Hours ago</p>
-                            </div>
-                        </div>
-                        <div class="br"></div>
-                    </aside>
+                    <?= PopularPosts::widget() ?>
                     <?= AllCategories::widget() ?>
                     <?= AllTags::widget() ?>
                 </div>

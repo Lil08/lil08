@@ -44,26 +44,20 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                '<category>/<code>' => 'post/view',
+                'blog/<category>' => 'post/index',
+                'blog/<category>/<code>' => 'post/view',
+
             ],
         ],
 
     ],
+    'controllerMap' => [
+        'upload' => [
+            'class' => 'andrewdanilov\InputImages\UploadController',
+            'path' => 'upload/images',
+        ],
+    ],
     'modules' => [
-        // ...
-//        'custompages' => [
-//            'class' => 'andrewdanilov\custompages\frontend\Module',
-//            // optional, path to template Views for pages and categories
-//            'templatesPath' => '@frontend/views/custompages',
-//            // optional, path to user translates
-////            'translatesPath' => '@common/messages/custompages',
-//            // optional, page text short version length, default is 50
-//            'pageShortTextWordsCount' => '30',
-//            // optional, callable functions to process page and category text,
-//            // i.e. to replace some shortcodes on it
-//            'pageTextProcessor' => 'frontend\components\MyPageTextProcessor::replaceShortcodes',
-//            'categoryTextProcessor' => 'frontend\components\MyCategoryTextProcessor::replaceShortcodes',
-//        ],
     ],
     'params' => $params,
 ];
